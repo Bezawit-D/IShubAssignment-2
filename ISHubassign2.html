@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Practice</title>
+
+    <style>
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .gallery-image {
+            width: 250px;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        li {
+            margin: 8px;
+            cursor: pointer;
+        }
+
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript Practice</h1>
+
+
+
+    <h2>1. Change Text & Color</h2>
+
+    <p id="message">Welcome to my JavaScript page.</p>
+
+    <button onclick="showHello()">Show Hello</button>
+    <button onclick="makeBlue()">Make Blue</button>
+
+
+    <hr>
+
+    <h2>2.Image</h2>
+
+    <img id="gallery" class="gallery-image" src="home.jpg">
+
+    <p>Choose an image:</p>
+
+    <button onclick="selectImage('home.jpg')">Home</button>
+    <button onclick="selectImage('nature.jpg')">Nature</button>
+    <button onclick="selectImage('city.jpg')">City</button>
+
+
+
+    <hr>
+
+    <h2>3. My To-Do List</h2>
+
+    <ul id="tasks">
+
+        <li onclick="completeTask(this)">
+            Clean my room
+        </li>
+
+        <li onclick="completeTask(this)">
+            Study JavaScript
+        </li>
+
+        <li onclick="completeTask(this)">
+            Watch an educational video
+        </li>
+
+    </ul>
+
+
+
+    <hr>
+
+    <h2>4. Counter App</h2>
+
+    <p>Current number: <strong id="number">0</strong></p>
+
+    <button onclick="addNumber()">+</button>
+    <button onclick="subtractNumber()">-</button>
+
+
+
+    <hr>
+
+    <h2>5. Next Item</h2>
+
+    <ul>
+
+        <li id="first">HTML</li>
+        <li id="second">CSS</li>
+        <li id="third">JavaScript</li>
+        <li id="fourth">Python</li>
+
+    </ul>
+
+    <button onclick="checkNext(document.getElementById('first'))">
+        Check after HTML
+    </button>
+
+    <button onclick="checkNext(document.getElementById('third'))">
+        Check after JavaScript
+    </button>
+
+    <button onclick="checkNext(document.getElementById('fourth'))">
+        Check after Python
+    </button>
+
+    <p id="result"></p>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        // 1. CHANGE TEXT AND COLOR
+
+        function showHello() {
+            document.getElementById("message").textContent = "Hello";
+        }
+
+        function makeBlue() {
+            document.getElementById("message").style.color = "blue";
+        }
+
+
+        // 2. IMAGE GALLERY
+
+        function selectImage(fileName) {
+            document.getElementById("gallery").src = fileName;
+        }
+
+
+        // 3. TO-DO LIST
+
+        function completeTask(task) {
+            task.classList.toggle("completed");
+        }
+
+
+       //  4. COUNTER
+
+        let number = 0;
+
+        function addNumber() {
+            number++;
+
+            document.getElementById("number").textContent = number;
+        }
+
+        function subtractNumber() {
+
+            if (number > 0) {
+                number--;
+            }
+
+            document.getElementById("number").textContent = number;
+        }
+
+
+        // 5. NEXT SIBLING
+
+        function checkNext(item) {
+
+            const nextItem = item.nextElementSibling;
+
+            if (nextItem) {
+
+                document.getElementById("result").textContent =
+                    "The next item is: " + nextItem.textContent;
+
+                console.log(nextItem.textContent);
+
+            } else {
+
+                document.getElementById("result").textContent =
+                    "No more items";
+
+                console.log("No more items");
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
